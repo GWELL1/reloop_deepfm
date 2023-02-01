@@ -192,9 +192,9 @@ def _get_mindrecord_dataset(directory, train_mode=True, epochs=1, batch_size=100
     Returns:
         Dataset.
     """
-    file_prefix_name = 'train_input_part.mindrecord' if train_mode else 'test_input_part.mindrecord'
-    shuffle = train_mode  
+    file_prefix_name = 'train_input_part.mindrecord' if train_mode else 'test_input_part.mindrecord'    
     file_suffix_name = '00' if train_mode else '0'
+    shuffle = train_mode
     
     if rank_size is not None and rank_id is not None: 
         data_set = ds.MindDataset(os.path.join(directory, file_prefix_name + file_suffix_name),

@@ -267,22 +267,6 @@ class NetWithLossClass(nn.Cell):
         l2_loss_all = self.l2_coef * (l2_loss_v + l2_loss_w) * 0.5
         loss = mean_log_loss  + l2_loss_all
         return loss
-        # print("----------------------------------------------------------------------------")
-        # alpha = 0.2  # alpha取值在[0，1]
-        # lce = mean_log_loss
-        # # pre_deepfm_net = DeepFMModel(config)
-        # # param_dict = load_checkpoint(config.checkpoint_path)
-        # # load_param_into_net(pre_deepfm_net, param_dict)
-        # # i = 1
-        # # for item in ds_train.create_dict_iterator():
-        # #     print(i)
-        # #     i = i+1
-        # #     logits, _, _, = pre_deepfm_net(item["feat_ids"], item['feat_vals'])
-        # y_last = self.logits   # 前一次的预测
-        # relu = ops.ReLU()
-        # lsc = self.ReduceMean_false(label * relu(y_last - predict) + (1-label) * relu(predict - y_last))
-        # loss_reloop = alpha * lsc + (1 - alpha) * lce
-        # return loss_reloop
 
 
 class TrainStepWrap(nn.Cell):
