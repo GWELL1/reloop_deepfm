@@ -1,10 +1,15 @@
+import os
+import gc
 import pandas as pd
 from pathlib import Path
-import gc
 
 
 headers = ["label", "user_id", "item_id", "tag_id"]
 data_files = ["../data_mov/AFN_data/train.libsvm", "../data_mov/AFN_data/valid.libsvm"]
+file_path = "../data_mov/origin_data/"
+if not os.path.exists(file_path):
+    os.makedirs(file_path)
+
 for f in data_files:
     df = pd.read_csv(f, sep=" ", names=headers)
     for col in headers[1:]:
