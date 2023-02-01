@@ -72,8 +72,6 @@ class AUCMetric(Metric):
         if len(self.true_labels) != len(self.pred_probs):
             raise RuntimeError('true_labels.size() is not equal to pred_probs.size()')
         auc = roc_auc_score(self.true_labels, self.pred_probs)
-        # # auc = self.pred_probs
-        # auc = self.true_labels
         return auc
 
 
@@ -310,7 +308,7 @@ class TrainStepWrap(nn.Cell):
     def construct(self, batch_ids, batch_wts, label):
         weights = self.weights
         loss = self.network(batch_ids, batch_wts, label)
-        sens = P.Fill()(P.DType()(loss), P.Shape()(loss), self.sens) #
+        sens = P.Fill()(P.DType()(loss), P.Shape()(loss), self.sens)
         grads = self.grad(self.network, weights)(batch_ids, batch_wts, label, sens)
         if self.reducer_flag:
             # apply grad reducer on grads
@@ -329,7 +327,6 @@ class PredictWithSigmoid(nn.Cell):
     def construct(self, batch_ids, batch_wts, labels):
         logits, _, _, = self.network(batch_ids, batch_wts)
         pred_probs = self.sigmoid(logits)
-        # print(f"logits = {logits}, pred_probs = {pred_probs}, labels = {labels}\n")
         return logits, pred_probs, labels
 
 

@@ -66,8 +66,6 @@ class AUCMetric(Metric):
         if len(self.true_labels) != len(self.pred_probs):
             raise RuntimeError('true_labels.size() is not equal to pred_probs.size()')
         auc = roc_auc_score(self.true_labels, self.pred_probs)
-        # # auc = self.pred_probs
-        # auc = self.true_labels
         return auc
 
 
@@ -256,7 +254,6 @@ class NetWithLossClass(nn.Cell):
         self.Square = P.Square()
         self.ReduceMean_false = P.ReduceMean(keep_dims=False)
         self.ReduceSum_false = P.ReduceSum(keep_dims=False)
-        # self.logits = logits
 
     def construct(self, batch_ids, batch_wts, label):
         predict, fm_id_weight, fm_id_embs = self.network(batch_ids, batch_wts)
@@ -315,7 +312,7 @@ class PredictWithSigmoid(nn.Cell):
     def construct(self, batch_ids, batch_wts, labels):
         logits, _, _, = self.network(batch_ids, batch_wts)
         pred_probs = self.sigmoid(logits)
-        # print(f"logits = {logits}, pred_probs = {pred_probs}, labels = {labels}\n")
+
         return logits, pred_probs, labels
 
 
