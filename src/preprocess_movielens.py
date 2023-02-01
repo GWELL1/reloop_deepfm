@@ -152,7 +152,7 @@ def statsdata(file_path, dict_output_path, recommendation_dataset_stats_dict, de
                                                                                        dense_dim + slot_dim + 1, line))
                 continue
             if count % 100000 == 0:
-                print("Have handled {}  10w lines.".format(count // 100000))
+                print("Have handled {}*10w lines.".format(count // 100000))
             values = items[1: dense_dim + 1]
             cats = items[dense_dim + 1:]
 
@@ -200,7 +200,7 @@ def random_split_trans2mindrecord(input_file_path, output_file_path, recommendat
         for i, line in enumerate(file_in):
             count += 1
             if count % 100000 == 0:
-                print("Have handle {}  10w lines.".format(count // 100000))
+                print("Have handle {}*10w lines.".format(count // 100000))
             line = line.strip("\n")
             items = line.split(",")
             if len(items) != (1 + dense_dim + slot_dim):
