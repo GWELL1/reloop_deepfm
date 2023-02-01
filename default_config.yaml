@@ -49,7 +49,7 @@ loss_file_name: "./results/loss.log"
 do_eval: 'True'
 
 # eval.py 'CTR Prediction'
-checkpoint_path: "results/ckpt_input/deepfm_0.9635.ckpt"
+checkpoint_path: "results/ckpt_input/deepfm-75_368.ckpt"
 
 # export.py "deepfm export"
 device_id: 0
