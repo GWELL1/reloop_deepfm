@@ -11,7 +11,7 @@ enable_profiling: False
 
 # ==============================================================================
 #"""data config"""
-data_vocab_size: 90239
+data_vocab_size: 90437
 train_num_of_parts: 21
 test_num_of_parts: 3
 batch_size: 4096
@@ -69,7 +69,7 @@ label_path: ''
 dense_dim: 0
 slot_dim: 3
 threshold: 0
-train_line_count: 1404801
+train_line_count: 1806173
 skip_id_convert: 0
 
 ---
@@ -99,7 +99,7 @@ label_path: 'label path'
 dense_dim: 'The number of your continues fields'
 slot_dim: 'The number of your sparse fields, it can also be called catelogy features.'
 threshold: 'Word frequency below this will be regarded as OOV. It aims to reduce the vocab size'
-train_line_count: 'The number of examples in your dataset  1404801  200686 401372'
+train_line_count: 'The number of examples in your dataset'
 skip_id_convert: 'Skip the id convert, regarding the original id as the final id.'
 ---
 device_target: ['Ascend', 'GPU', 'CPU']
