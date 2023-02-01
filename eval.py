@@ -61,13 +61,6 @@ def eval_deepfm():
     
     start = time.time()
     res = model.eval(ds_eval)
-    
-    # aa, _, _, = eval_net.construct()
-    # print(f'predict = {aa}')
-    # deepfm_net = DeepFMModel(config)
-    # deepfmcontru = deepfm_net(ds_eval)
-    # print(deepfmcontru)
-    
     eval_time = time.time() - start
     time_str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
     out_str = f'{time_str} AUC: {list(res.values())[0]}, eval time: {eval_time}s.'

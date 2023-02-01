@@ -1,4 +1,4 @@
-# Copyright 2021 Huawei Technologies Co., Ltd
+# Copyright 2022 Huawei Technologies Co., Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -278,4 +278,3 @@ if __name__ == '__main__':
                                   train_line_count=config.train_line_count, line_per_sample=config.line_per_sample,
                                   test_size=0.2, seed=2020, dense_dim=config.dense_dim, slot_dim=config.slot_dim)
     
-

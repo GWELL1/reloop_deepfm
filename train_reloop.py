@@ -1,4 +1,4 @@
-# Copyright 2020 Huawei Technologies Co., Ltd
+# Copyright 2022 Huawei Technologies Co., Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -96,8 +96,6 @@ def train_deepfm():
                               rank_id=rank_id)
     
     steps_size = ds_train.get_dataset_size()
-    # print("----------------------------------------------------------------------------")
-    # context.set_context(mode=context.PYNATIVE_MODE)
     pre_deepfm_net = DeepFMModel(config)
     param_dict = load_checkpoint(config.checkpoint_path)
     load_param_into_net(pre_deepfm_net, param_dict)
@@ -106,17 +104,9 @@ def train_deepfm():
     for data in ds_train.create_dict_iterator():
         logits, _, _, = pre_deepfm_net(data["feat_ids"], data["feat_vals"])
         listds[i] = logits
-        i = i+1
-    # listds = Tensor(listds)
+        i = i+1    
     model_builder = ModelBuilder(config, config)
-    # # import pdb;pdb.set_trace()
-    # # listds = tuple(listds)
     train_net, eval_net = model_builder.get_train_eval_net(listds, steps_size)
-    # param_dict = load_checkpoint(config.checkpoint_path)
-    # load_param_into_net(train_net, param_dict)
-    # print("----------------------------------------------------------------------------")
-    # model_builder = ModelBuilder(config, config)
-    # train_net, eval_net = model_builder.get_train_eval_net()
     auc_metric = AUCMetric()
     model = Model(train_net, eval_network=eval_net, metrics={"auc": auc_metric})
 

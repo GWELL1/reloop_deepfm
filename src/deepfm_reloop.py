@@ -1,4 +1,4 @@
-# Copyright 2020 Huawei Technologies Co., Ltd
+# Copyright 2022 Huawei Technologies Co., Ltd
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -272,11 +272,9 @@ class NetWithLossClass(nn.Cell):
         l2_loss_v = self.ReduceSum_false(self.Square(fm_id_embs))
         l2_loss_all = self.l2_coef * (l2_loss_v + l2_loss_w) * 0.5
         loss = mean_log_loss + l2_loss_all
-        # print("--------------------------------------------------------------------------") 
-        alpha = 0.2  # alpha取值在[0，1]
+        alpha = 0.2
         y_now = self.Sigmoid(predict)
-        y_last = self.Sigmoid(self.listds[self.index])   # 前一次的预测
-        # print(self.listds[self.index] == self.one, self.listds[self.index] == self.two)
+        y_last = self.Sigmoid(self.listds[self.index])
         self.index = (self.index + 1) % self.steps_size
         lsc = label * self.relu(y_last - y_now) + (1-label) * self.relu(y_now - y_last)
         lsc = self.ReduceMean_false(lsc)
