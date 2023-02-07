@@ -43,6 +43,7 @@ loss_callback: True
 
 # train.py 'CTR Prediction'
 dataset_path: "./data_mov/mindrecord"
+dataset_path_test: "./data_mov/mindrecord2"
 ckpt_path: "./results/ckpt"
 eval_file_name: "./results/auc.log"
 loss_file_name: "./results/loss.log"

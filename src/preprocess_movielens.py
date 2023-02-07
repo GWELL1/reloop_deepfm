@@ -278,3 +278,10 @@ if __name__ == '__main__':
                                   train_line_count=config.train_line_count, line_per_sample=config.line_per_sample,
                                   test_size=0.2, seed=2020, dense_dim=config.dense_dim, slot_dim=config.slot_dim)
     
+    in_file_path = data_path + "origin_data/test.txt"
+    output_path = data_path + "mindrecord2/"
+    mkdir_path(output_path)
+    random_split_trans2mindrecord(in_file_path, output_path, stats, part_rows=2000000,
+                                  train_line_count=config.train_line_count, line_per_sample=config.line_per_sample,
+                                  test_size=1, seed=2020, dense_dim=config.dense_dim, slot_dim=config.slot_dim)
+    

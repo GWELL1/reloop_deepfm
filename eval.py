@@ -43,7 +43,7 @@ def modelarts_process():
 @moxing_wrapper(pre_process=modelarts_process)
 def eval_deepfm():
     """ eval_deepfm """
-    ds_eval = create_dataset(config.dataset_path, train_mode=False,
+    ds_eval = create_dataset(config.dataset_path_test, train_mode=False,
                              epochs=1, batch_size=config.batch_size,
                              data_type=DataType(config.data_format),
                              line_per_sample=config.line_per_sample)

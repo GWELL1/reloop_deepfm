@@ -27,7 +27,7 @@ if not os.path.exists(file_path1):
 if not os.path.exists(file_path2):
     os.makedirs(file_path2)
 headers = ["label", "user_id", "item_id", "tag_id"]
-data_files = ["../data_mov/AFN_data/train.libsvm", "../data_mov/AFN_data/valid.libsvm"]
+data_files = ["../data_mov/AFN_data/train.libsvm", "../data_mov/AFN_data/valid.libsvm", "../data_mov/AFN_data/test.libsvm"]
 
 for f in data_files:
     df = pd.read_csv(f, sep=" ", names=headers)
@@ -39,13 +39,20 @@ for f in data_files:
 
 file1 = open('../data_mov/AFN_data/train.txt')
 file2 = open('../data_mov/AFN_data/valid.txt')
+file3 = open('../data_mov/AFN_data/test.txt')
 lines1 = file1.readlines()
 lines2 = file2.readlines()
-del lines1[0], lines2[0]
+lines3 = file3.readlines()
+del lines1[0], lines2[0], lines3[0]
 file1.close()
 file2.close()
+file3.close()
 
-file_new = open('../data_mov/origin_data/data.txt', 'w')
-file_new.writelines(lines1)
-file_new.writelines(lines2)
-file_new.close()
+file_new1 = open('../data_mov/origin_data/data.txt', 'w')
+file_new1.writelines(lines1)
+file_new1.writelines(lines2)
+file_new1.close()
+
+file_new2 = open('../data_mov/origin_data/test.txt', 'w')
+file_new2.writelines(lines3)
+file_new2.close()
