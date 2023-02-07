@@ -284,4 +284,4 @@ if __name__ == '__main__':
     random_split_trans2mindrecord(in_file_path, output_path, stats, part_rows=2000000,
                                   train_line_count=config.train_line_count, line_per_sample=config.line_per_sample,
                                   test_size=1, seed=2020, dense_dim=config.dense_dim, slot_dim=config.slot_dim)
-    
+ 
